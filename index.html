@@ -16,6 +16,7 @@
 <div class="container">
   <p>Guess what letter I'm thinking of?</p>
   <div id="game"></div>
+	<div id="guessesId"></div>
 
 <script type="text/javascript">
     //list out possible choices on keyboard
@@ -24,13 +25,12 @@
     var losses = 0;  // losses start at 0
     var guessesLeft = 9;  // start with 10 guesses
 
-
     // when user hits key
     document.onkeyup = function(event) {
         // record player guess as variable
 				var playerGuess = event.key.toLowerCase();
-				guessesSoFar = [];
-				guessesSoFar.push(playerGuess)
+				var guessesSoFar = [];
+				guessesSoFar.push(playerGuess);
 
         // robot guess random key character
         var robotGuess = guess[Math.floor(Math.random() * guess.length)];
@@ -51,25 +51,16 @@
 					guessesLeft = 9; // reset
 				}
 
-
           var html =
           "<p>Wins: " + wins + "</p>" +
           "<p>Losses: " + losses + "</p>" +
-          "<p>Guesses Left: " + guessesLeft + "</p>" +
-          "<p>Guesses so far: " + guessesSoFar + "</p>";
+          "<p>Guesses Left: " + guessesLeft + "</p>";
 
         // display as html
          document.querySelector("#game").innerHTML = html;
-
+				 document.getElementById("guessesId").innerHTML = "Your guesses so far: " + guessesSoFar;
       };
 
 </script>
-
-
-
-
-
-
 </body>
-
 </html>
